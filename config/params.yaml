@@ -1,0 +1,47 @@
+dataset_dir : ../data/raw/
+datetime_columns :
+  - tanggal
+object_columns :
+  - stasiun
+  - critical
+  - categori
+int32_columns :
+  - pm10
+  - pm25
+  - so2
+  - co
+  - o3
+  - no2
+  - max
+predictors :
+  - stasiun
+  - pm10
+  - pm25
+  - so2
+  - co
+  - o3
+  - no2
+range_stasiun :
+  - DKI1 (Bunderan HI)
+  - DKI2 (Kelapa Gading)
+  - DKI3 (Jagakarsa)
+  - DKI4 (Lubang Buaya)
+  - DKI5 (Kebon Jeruk) Jakarta Barat
+range_pm10 :
+  - -1
+  - 800
+range_pm25 :
+  - -1
+  - 400
+range_so2 :
+  - -1
+  - 500
+range_co :
+  - -1
+  - 100
+range_o3 :
+  - -1
+  - 140
+range_no2 :
+  - -1
+  - 100
