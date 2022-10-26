@@ -1,4 +1,4 @@
-tanggal,pm10,pm25,so2,co,o3,no2,max,critical,categori,location
+tanggal,stasiun,pm10,pm25,so2,co,o3,no2,max,critical,categori
 2021-07-01,DKI1 (Bunderan HI),55,76,27,14,20,31,76,PM25,SEDANG
 2021-07-02,DKI1 (Bunderan HI),55,70,33,16,14,30,70,PM25,SEDANG
 2021-07-03,DKI1 (Bunderan HI),58,81,33,12,19,25,81,PM25,SEDANG
