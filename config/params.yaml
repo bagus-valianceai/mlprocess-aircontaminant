@@ -1,4 +1,4 @@
-dataset_dir : ../data/raw/
+dataset_dir : data/raw/
 datetime_columns :
   - tanggal
 object_columns :
