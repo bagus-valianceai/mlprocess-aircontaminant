@@ -1,2 +1,5 @@
+*.ipynb_checkpoints
+*__pycache__
 /data/preprocessed
 /venv_win/
+/venv_linux/
