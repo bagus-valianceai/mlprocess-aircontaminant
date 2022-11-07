@@ -1,0 +1,101 @@
+# Path related
+raw_dataset_dir: data/raw/
+train_set_path:
+- data/processed/x_train.pkl
+- data/processed/y_train.pkl
+valid_set_path:
+- data/processed/x_valid.pkl
+- data/processed/y_valid.pkl
+test_set_path:
+- data/processed/x_test.pkl
+- data/processed/y_test.pkl
+train_feng_set_path:
+- data/processed/x_train_feng.pkl
+- data/processed/y_train_feng.pkl
+valid_feng_set_path:
+- data/processed/x_valid_feng.pkl
+- data/processed/y_valid_feng.pkl
+test_feng_set_path:
+- data/processed/x_test_feng.pkl
+- data/processed/y_test_feng.pkl
+raw_dataset_path: data/processed/raw_dataset.pkl
+cleaned_raw_dataset_path: data/processed/raw_dataset.pkl
+production_model_path: models/production_model.pkl
+ohe_stasiun_path: models/ohe_stasiun.pkl
+le_encoder_path: models/le_encoder.pkl
+training_log_path: log/training_log.json
+
+# Debug related
+print_debug: true
+
+# Columns by data type related
+datetime_columns:
+- tanggal
+int32_columns:
+- pm10
+- pm25
+- so2
+- co
+- o3
+- no2
+- max
+object_columns:
+- stasiun
+- critical
+- categori
+
+# Predictors and label related
+label: categori
+predictors:
+- stasiun
+- pm10
+- pm25
+- so2
+- co
+- o3
+- no2
+
+# Range of data related
+range_stasiun:
+- DKI1 (Bunderan HI)
+- DKI2 (Kelapa Gading)
+- DKI3 (Jagakarsa)
+- DKI4 (Lubang Buaya)
+- DKI5 (Kebon Jeruk) Jakarta Barat
+range_pm10:
+- -1
+- 800
+range_pm25:
+- -1
+- 400
+range_so2:
+- -1
+- 500
+range_co:
+- -1
+- 100
+range_o3:
+- -1
+- 160
+range_no2:
+- -1
+- 100
+label_categories:
+- BAIK
+- SEDANG
+- TIDAK SEHAT
+label_categories_new:
+- BAIK
+- TIDAK BAIK
+
+# Replacement for missing value related
+missing_value_pm10:
+  BAIK: 28
+  TIDAK BAIK: 55
+missing_value_pm25:
+  BAIK: 38
+  TIDAK BAIK: 82
+missing_value_so2: 35
+missing_value_co: 11
+missing_value_o3: 29
+missing_value_no2: 18
