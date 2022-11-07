@@ -1,0 +1,15 @@
+FROM python:3.9.15-slim
+
+WORKDIR /home
+
+RUN apt-get update && apt-get upgrade -y 
+
+COPY requirements.txt .
+
+RUN pip install --upgrade pip && pip install wheel && pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8080
+
+CMD ["python", "src/api.py"]
