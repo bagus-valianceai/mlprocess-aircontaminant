@@ -1,13 +1,5 @@
 name: air_quality_prediction
 services:
-  api:
-    build: docker/api
-    image: cbagusjk/ml_process_api
-    container_name: api_backend
-    ports:
-      - 8080:8080
-    volumes:
-      - .:/home
   streamlit:
     build: docker/streamlit
     image: cbagusjk/ml_process_streamlit
@@ -18,4 +10,12 @@ services:
       - 8501:8501  
     volumes:
       - .:/home 
+  api:
+    build: docker/api
+    image: cbagusjk/ml_process_api
+    container_name: api_backend
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/home
   
