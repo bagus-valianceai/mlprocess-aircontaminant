@@ -1,0 +1,7 @@
+.github
+.ipynb_checkpoints
+__pycache__
+venv_api
+venv_linux
+venv_streamlit
+venv_win

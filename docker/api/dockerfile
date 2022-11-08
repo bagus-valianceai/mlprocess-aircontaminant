@@ -1,6 +1,9 @@
 FROM python:3.9.15-slim-buster
 WORKDIR /home
-COPY ./requirements.txt .
+COPY ./requirements.txt ./
+COPY ./config/* ./config/
+COPY ./models/* ./models/
+COPY ./src/* ./src/
 RUN \
 apt-get update && \
 apt-get upgrade -y && \
