@@ -7,6 +7,7 @@ apt-get upgrade -y && \
 apt-get autoremove -y && \
 apt-get clean -y && \
 pip install --upgrade pip && \
+pip install wheel && \
 pip install -r requirements.txt
 EXPOSE 8501
 
