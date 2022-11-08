@@ -45,10 +45,10 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-#     - name: Docker Build Pushh
-#       run: |
-#         docker build -t ml_process_demo .
-#         docker push ml_process_demo
+    - name: Docker Compose Build and Push
+      run: |
+        docker compose build --no-cache
+        docker compose push
   
   # docker-pull-ec2:
   #   needs: docker-compose-build
