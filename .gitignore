@@ -1,5 +1,7 @@
 *.ipynb_checkpoints
 *__pycache__
-/data/preprocessed
+/data/preprocessed/
 /venv_win/
 /venv_linux/
+/venv_api/
+/venv_streamlit/
