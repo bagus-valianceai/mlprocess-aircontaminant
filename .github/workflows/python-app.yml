@@ -81,4 +81,6 @@ jobs:
         ssh deploy_ec2 "rsync -a ./temp ./ml_process_demo"
         ssh deploy_ec2 "rm -rf temp/"
         ssh deploy_ec2 "cd ml_process_demo && git lfs pull"
+        ssh deploy_ec2 "cd ml_process_demo && sudo docker compose rm -s api && sudo docker compose rm -s streamlit"
+        ssh deploy_ec2 "cd ml_process_demo && sudo docker rmi cbagusjk/ml_process_api || sudo docker rmi cbagusjk/ml_process_streamlit"
         ssh deploy_ec2 "cd ml_process_demo && sudo docker compose pull && sudo docker compose up -d"
