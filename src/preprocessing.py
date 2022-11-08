@@ -117,6 +117,10 @@ def ohe_transform(set_data: pd.DataFrame, tranformed_column: str, ohe_statiun: O
         inplace = True
     )
 
+    # Convert columns type to string
+    new_col = [str(col_name) for col_name in set_data.columns.to_list()]
+    set_data.columns = new_col
+
     # Return new feature engineered set data
     return set_data
 
@@ -323,7 +327,7 @@ if __name__ == "__main__":
     )
 
     # 8. Fit ohe with predefined stasiun data
-    ohe_statiun = ohe_fit(
+    ohe_stasiun = ohe_fit(
         config_data["range_stasiun"],
         config_data["ohe_stasiun_path"]
     )
@@ -332,19 +336,19 @@ if __name__ == "__main__":
     train_set = ohe_transform(
         train_set,
         "stasiun",
-        ohe_statiun
+        ohe_stasiun
     )
 
     valid_set = ohe_transform(
         valid_set,
         "stasiun",
-        ohe_statiun
+        ohe_stasiun
     )
 
     test_set = ohe_transform(
         test_set,
         "stasiun",
-        ohe_statiun
+        ohe_stasiun
     )
 
     # 10. Undersampling dataset

@@ -4,10 +4,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from xgboost import XGBClassifier
 
-from sklearn.metrics import classification_report, ConfusionMatrixDisplay, roc_curve, roc_auc_score
-from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
+from sklearn.metrics import classification_report
+from sklearn.model_selection import RandomizedSearchCV
 
-import joblib
 import json
 import pandas as pd
 import copy
@@ -338,12 +337,12 @@ def create_dist_params(model_name: str) -> dict:
         "n_estimators" : [50, 100, 200, 300, 400, 500]
     }
     dist_params_dct = {
-        "algorithm" : ["gini", "entropy", "log_loss"],
-        "min_sample_split" : [1, 2, 4, 6, 10, 15, 20, 25],
-        "min_sample_leaf" : [1, 2, 4, 6, 10, 15, 20, 25]
+        "criterion" : ["gini", "entropy", "log_loss"],
+        "min_samples_split" : [2, 4, 6, 10, 15, 20, 25],
+        "min_samples_leaf" : [2, 4, 6, 10, 15, 20, 25]
     }
     dist_params_knn = {
-        "creterion" : ["ball_tree", "kd_tree", "brute"],
+        "algorithm" : ["ball_tree", "kd_tree", "brute"],
         "n_neighbors" : [2, 3, 4, 5, 6, 10, 15, 20, 25],
         "leaf_size" : [2, 3, 4, 5, 6, 10, 15, 20, 25],
     }
@@ -354,10 +353,10 @@ def create_dist_params(model_name: str) -> dict:
         "max_iter" : [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
     }
     dist_params_rfc = {
-        "algorithm" : ["gini", "entropy", "log_loss"],
+        "criterion" : ["gini", "entropy", "log_loss"],
         "n_estimators" : [50, 100, 200, 300, 400, 500],
-        "min_sample_split" : [1, 2, 4, 6, 10, 15, 20, 25],
-        "min_sample_leaf" : [1, 2, 4, 6, 10, 15, 20, 25]
+        "min_samples_split" : [2, 4, 6, 10, 15, 20, 25],
+        "min_samples_leaf" : [2, 4, 6, 10, 15, 20, 25]
     }
 
     # Make all models parameters in to one
