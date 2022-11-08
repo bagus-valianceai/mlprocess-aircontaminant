@@ -1,4 +1,4 @@
-FROM python:3.9.15-slim-buster
+FROM python:3.9.15-slim-buster as base
 WORKDIR /home
 COPY ./requirements.txt ./
 COPY ./config/* ./config/
@@ -12,5 +12,8 @@ apt-get clean -y && \
 pip install --upgrade pip && \
 pip install wheel && \
 pip install -r requirements.txt
+
+FROM base
+COPY --from=base /home/* /.
 EXPOSE 8080
 CMD ["python", "src/api.py"]

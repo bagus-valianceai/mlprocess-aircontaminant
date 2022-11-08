@@ -9,9 +9,7 @@ services:
     depends_on:
       - api
     ports:
-      - 8501:8501  
-    # volumes:
-    #   - .:/home 
+      - 8501:8501
   api:
     build: 
       context: .
@@ -20,5 +18,3 @@ services:
     container_name: api_backend
     ports:
       - 8080:8080
-    # volumes:
-    #   - .:/home
