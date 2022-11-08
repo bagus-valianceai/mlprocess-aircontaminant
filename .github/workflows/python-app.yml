@@ -43,7 +43,7 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-    - name: Docker Compose Build
+    - name: Docker Build Push
       run: |
         docker build -t ml_process_demo
         docker push ml_process_demo
