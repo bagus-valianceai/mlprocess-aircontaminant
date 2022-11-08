@@ -45,7 +45,7 @@ jobs:
 
     - name: Docker Build Push
       run: |
-        docker build -t ml_process_demo
+        docker build -t ml_process_demo .
         docker push ml_process_demo
   
   # docker-pull-ec2:
