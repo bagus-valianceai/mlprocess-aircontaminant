@@ -76,8 +76,10 @@ jobs:
         
     - name: Deploy to EC2
       run: |
-        ssh deploy_ec2 "git clone git@github.com:cbagusjk/ml_process_demo.git"
+        ssh deploy_ec2 "mkdir temp/ ml_process_demo/"
+        ssh deploy_ec2 "git clone git@github.com:cbagusjk/ml_process_demo.git temp/"
+        ssh deploy_ec2 "mv temp/* ml_process_demo/*"
+        ssh deploy_ec2 "rm -rf temp/"
         ssh deploy_ec2 "cd ml_process_demo"
-        ssh deploy_ec2 "ls"
         ssh deploy_ec2 "sudo docker compose pull"
         ssh deploy_ec2 "sudo docker compose up -d"
