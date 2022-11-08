@@ -9,7 +9,7 @@ services:
     ports:
       - 8501:8501
     volumes:
-      - /:/home/
+      - /home/ubuntu/ml_process_demo:/home/
   api:
     build: docker/api
     image: cbagusjk/ml_process_api
@@ -17,4 +17,4 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - /:/home/
+      - /home/ubuntu/ml_process_demo:/home/
