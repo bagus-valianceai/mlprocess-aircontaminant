@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  docker-compose-build:
 
     runs-on: ubuntu-latest
 
@@ -47,3 +47,34 @@ jobs:
       run: |
         docker compose build
         docker compose push
+  
+  docker-pull-ec2:
+    needs: docker-compose-build
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Creating SSH Configuration File
+      env:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        DOCKER_USER: ${{ secrets.DOCKER_HUB_USER }}
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_KEY" > ~/.ssh/deployment.pem
+        chmod 600 ~/.ssh/deployment.pem
+        cat >> ~/.ssh/config <<END
+        Host deploy_ec2
+          HostName $SSH_HOST
+          User $SSH_USER
+          IdentityFile ~/.ssh/deployment.pem
+          StrictHostKeyChecking no
+        END
+        
+    - name: Deploy to EC2
+      run: |
+        ssh deploy_ec2 "git clone https://github.com/cbagusjk/ml_process_demo.git"
+        ssh deploy_ec2 "cd ml_process_demo"
+        ssh deploy_ec2 "sudo docker compose pull"
+        ssh deploy_ec2 "sudo docker compose up"
