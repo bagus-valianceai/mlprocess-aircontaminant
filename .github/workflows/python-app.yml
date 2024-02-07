@@ -47,14 +47,14 @@ jobs:
         
     - name: File Checker
       run: |
-        ls src/
-        ls config/
+        cat src/api.py
+        cat config/config.yaml
         cat docker-compose.yaml
         
-    - name: Docker Compose Build and Push
-      run: |
-        docker compose build
-        docker compose push
+    # - name: Docker Compose Build and Push
+    #   run: |
+    #     docker compose build
+    #     docker compose push
   
   # docker-pull-ec2:
   #   needs: docker-compose-build
