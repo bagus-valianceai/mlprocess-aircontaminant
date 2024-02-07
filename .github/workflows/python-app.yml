@@ -47,7 +47,8 @@ jobs:
         
     - name: File Checker
       run: |
-        ls -l
+        ls src/
+        ls config/
         cat docker-compose.yaml
         
     - name: Docker Compose Build and Push
