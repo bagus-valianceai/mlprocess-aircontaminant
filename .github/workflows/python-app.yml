@@ -53,5 +53,6 @@ jobs:
         END
     - name: Deploy to EC2
       run: |
-        ssh deploy_ec2 "wget https://github.com/cbagusjk/ml_process_demo/blob/master/docker-compose.yaml"
+        ssh deploy_ec2 "rm docker-compose.yaml"
+        ssh deploy_ec2 "wget https://raw.githubusercontent.com/cbagusjk/ml_process_demo/master/docker-compose.yaml"
         ssh deploy_ec2 "sudo docker compose pull && sudo docker compose up -d"
