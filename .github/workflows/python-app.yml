@@ -76,11 +76,15 @@ jobs:
         
     - name: Deploy to EC2
       run: |
-        ssh deploy_ec2 "mkdir temp/"
-        ssh deploy_ec2 "git clone git@github.com:cbagusjk/ml_process_demo.git temp/"
-        ssh deploy_ec2 "rsync -a ./temp ./ml_process_demo"
-        ssh deploy_ec2 "rm -rf temp/"
-        ssh deploy_ec2 "cd ml_process_demo && git lfs pull"
-        ssh deploy_ec2 "cd ml_process_demo && sudo docker compose rm -s api && sudo docker compose rm -s streamlit"
-        ssh deploy_ec2 "cd ml_process_demo || sudo docker rmi cbagusjk/ml_process_api || sudo docker rmi cbagusjk/ml_process_streamlit"
-        ssh deploy_ec2 "cd ml_process_demo && sudo docker compose pull && sudo docker compose up -d"
+        ssh deploy_ec2 "wget https://raw.githubusercontent.com/cbagusjk/ml_process_demo/master/docker-compose.yaml"
+        ssh deploy_ec2 "sudo docker compose pull && sudo docker compose up -d"
+        
+      # run: |
+      #   ssh deploy_ec2 "mkdir temp/"
+      #   ssh deploy_ec2 "git clone git@github.com:cbagusjk/ml_process_demo.git temp/"
+      #   ssh deploy_ec2 "rsync -a ./temp ./ml_process_demo"
+      #   ssh deploy_ec2 "rm -rf temp/"
+      #   ssh deploy_ec2 "cd ml_process_demo && git lfs pull"
+      #   ssh deploy_ec2 "cd ml_process_demo && sudo docker compose rm -s api && sudo docker compose rm -s streamlit"
+      #   ssh deploy_ec2 "cd ml_process_demo || sudo docker rmi cbagusjk/ml_process_api || sudo docker rmi cbagusjk/ml_process_streamlit"
+      #   ssh deploy_ec2 "cd ml_process_demo && sudo docker compose pull && sudo docker compose up -d"
