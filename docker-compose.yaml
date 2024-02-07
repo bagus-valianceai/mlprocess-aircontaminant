@@ -18,4 +18,4 @@ services:
     image: cbagusjk/ml_process_api
     container_name: api_backend
     ports:
-      - 8080:8080
+      - 8088:8080
